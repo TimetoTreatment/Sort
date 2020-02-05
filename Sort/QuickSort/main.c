@@ -17,16 +17,19 @@ int main(void)
 	int i;
 	int function;
 	int err;
+	clock_t clock1 = clock();
+	clock_t clock2 = clock();
 	FILE* fp = fopen("numbers.txt", "r");
 
 
-	printf("\n 1 : Eqsort\n 2 : Eqsort_recursive\n 3 : Eqsort_old\n 4 : Eqsort_recursive_old\n 5 : Eqsort_TEST\n\n");
+	printf("\n 1 : Eqsort\n 2 : Eqsort_recursive\n 3 : Eqsort_old\n 4 : Eqsort_recursive_old\n 5 : Eqsort_Test\n\n");
 
 	do
 	{
 		printf(" Select Function Number to Test : ");
 		scanf("%d", &function);
-	} while (function < 1 || function > 5);
+	}
+	while (function < 1 || function > 5);
 
 	printf("\n Read numbers from numbers.txt\n ");
 
@@ -42,18 +45,19 @@ int main(void)
 
 	printf("\n\n Sorting %d numbers...\n\n", NUM);
 
-	clock_t start = clock();
+
+	clock1 = clock();
 
 	switch (function)
 	{
 		case 1: Eqsort(ar, 0, NUM - 1); break;
 		case 2: Eqsort_old(ar, 0, NUM - 1); break;
 		case 3: Eqsort_recursive(ar, 0, NUM - 1); break;
-		case 4: Eqsort_recursive_old(ar, 0, NUM - 1); break;
-		case 5: Eqsort_test(ar, 0, NUM - 1);
+		case 4: Eqsort_recursive_old(ar, 0, NUM - 1);  break;
+		case 5: Eqsort_test(ar, 0, NUM - 1); return 1;
 	}
 
-	clock_t end = clock();
+	clock2 = clock();
 
 	for (err = 0, i = 1; i < NUM; i++)
 	{
@@ -63,7 +67,7 @@ int main(void)
 
 	printf(" -------------------\n");
 	printf("  - ErrCount : %d\n", err);
-	printf("  - Time(ms) : %d\n", end - start);
+	printf("  - Time(ms) : %d\n", clock2 - clock1);
 	printf(" -------------------\n\n");
 
 
