@@ -70,7 +70,16 @@ void Eqsort(int ar[], int start, int end)
 			}
 		}
 
-		if (start < j)
+		if (j - start == 1)
+		{
+			if (ar[start] > ar[j])
+			{
+				temp = ar[start];
+				ar[start] = ar[j];
+				ar[j] = temp;
+			}
+		}
+		else if (start < j)
 		{
 			stack[index - 1] = start;
 			stack[index] = j;
@@ -78,7 +87,16 @@ void Eqsort(int ar[], int start, int end)
 			index += 2;
 		}
 
-		if (i < end)
+		if (end - i == 1)
+		{
+			if (ar[i] > ar[end])
+			{
+				temp = ar[end];
+				ar[end] = ar[i];
+				ar[i] = temp;
+			}
+		}
+		else if (i < end)
 		{
 			stack[index - 1] = i;
 			stack[index] = end;

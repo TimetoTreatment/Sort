@@ -33,7 +33,10 @@
     <ClCompile Include="Tqsort.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Eqsort_test.c">
+    <ClCompile Include="FILE_read.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tqsort_test.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
