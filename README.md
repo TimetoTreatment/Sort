@@ -3,6 +3,7 @@
 This is my 'Sort' repository.
 
 
-# Including Sort Algorithms
+
+:: Included Sort Algorithms List ::
  - Quick
  - ???
