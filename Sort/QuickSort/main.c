@@ -47,7 +47,8 @@ int main(void)
 	else
 	{
 		FILE_read(ar, NUM);
-		printf("\n\n ::Sorting %d numbers...\n\n", NUM);
+		printf("\n\n");
+		printf(" ::Sorting %d numbers...\n\n", NUM);
 
 		clock1 = clock();
 		switch (function)
