@@ -52,6 +52,6 @@ void Tqsort_test(int ar[], int start, int end)
 	printf(" -------------------\n");
 	printf("  - ErrCount : %d\n", err);
 	printf("  - Old (ms) : %d\n", Eqsort_time / n);
-	printf("  - New (ms) : %d\n", Tqsort_time / n * 49 / 50);
+	printf("  - New (ms) : %d\n", Tqsort_time / n);
 	printf(" -------------------\n\n");
 }

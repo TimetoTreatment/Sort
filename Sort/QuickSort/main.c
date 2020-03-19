@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define NUM 2000000
+#define NUM 10000000
 
 int ar[NUM];
 

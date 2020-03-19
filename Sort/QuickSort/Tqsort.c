@@ -51,7 +51,7 @@ void Tqsort(int ar[], int start, int end)
 
 		pivot = pivot_list[1];
 
-		for (i = start, j = end;; i++, j--)
+		for (i = start, j = end; i <= j; i++, j--)
 		{
 			while (ar[i] < pivot)
 				i++;

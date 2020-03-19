@@ -3,11 +3,11 @@ void Eqsort_recursive(int ar[], int start, int end)
 	//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-//	
 	// * Ascending Sort Function * //	
 	//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-//
-	/*								*
+	/*                              *
 		1. ar[] = array to sort
 		2. start = first of array
 		3. end = last of array
-	*								*/
+	*                               */
 
 	int i, j, temp;
 	int pivot;
@@ -34,13 +34,10 @@ void Eqsort_recursive(int ar[], int start, int end)
 
 	pivot = pivot_list[1];
 
-	for (i = start, j = end;; i++, j--)
+	for (i = start, j = end; i <= j; i++, j--)
 	{
-		while (ar[i] < pivot)
-			i++;
-
-		while (ar[j] > pivot)
-			j--;
+		while (ar[i] < pivot) i++;
+		while (ar[j] > pivot) j--;
 
 		if (i > j)
 			break;

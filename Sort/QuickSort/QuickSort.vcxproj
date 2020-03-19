@@ -138,22 +138,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Eqsort.c" />
-    <ClCompile Include="Eqsort_old.c" />
-    <ClCompile Include="Eqsort_Recursive.c" />
-    <ClCompile Include="Eqsort_Recursive_old.c" />
+    <ClCompile Include="Eqsort.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_CONSOLE;%(PreprocessorDefinitions) _CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="Eqsort_old.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_CONSOLE;%(PreprocessorDefinitions) _CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="Eqsort_Recursive.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_CONSOLE;%(PreprocessorDefinitions) _CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="Eqsort_Recursive_old.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_CONSOLE;%(PreprocessorDefinitions) _CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+    </ClCompile>
     <ClCompile Include="test.c">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_DEBUG;_CONSOLE;%(PreprocessorDefinitions) _CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">_DEBUG;_CONSOLE;%(PreprocessorDefinitions) _CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_CONSOLE;%(PreprocessorDefinitions) _CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="FILE_read.c">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_DEBUG;_CONSOLE;%(PreprocessorDefinitions) _CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_CONSOLE;%(PreprocessorDefinitions) _CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="main.c">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_DEBUG;_CONSOLE;%(PreprocessorDefinitions) _CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">_DEBUG;_CONSOLE;%(PreprocessorDefinitions) _CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_CONSOLE;%(PreprocessorDefinitions) _CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
     </ClCompile>
-    <ClCompile Include="Tqsort.c" />
+    <ClCompile Include="Tqsort.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;_CONSOLE;%(PreprocessorDefinitions) _CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="numbers.txt" />
