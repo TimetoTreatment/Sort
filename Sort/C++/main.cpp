@@ -1,12 +1,17 @@
 #include <iostream>
 #include <chrono>
 #include <algorithm>
-#include <vector>
 #include "Console.h"
 #include "MergeSort.h"
 #include "QuickSort.h"
 
 using namespace std;
+
+enum class Type
+{
+	Array,
+	Vector,
+};
 
 
 int main(void)
@@ -16,16 +21,21 @@ int main(void)
 	chrono::steady_clock::time_point startClock;
 	chrono::duration<double> elapsedClock;
 
-	int* ar;
-	int* inputArray;
-	int size;
+	int* arrayOut;
+	int* arrayIn;
+	int arraySize;
 	bool RandomArray = false;
 	int menu = 0;
 
+	Type type = Type::Vector;
+	vector<int> vec;
+	vector<int> vecOut;
+
 	cout << "Enter size of array : ";
-	cin >> size;
-	inputArray = new int[size];
-	ar = new int[size];
+	cin >> arraySize;
+	arrayIn = new int[arraySize];
+	arrayOut = new int[arraySize];
+	vec.reserve(arraySize);
 
 	cout << "Fill an array with random numbers? : ";
 	cin >> RandomArray;
@@ -33,15 +43,21 @@ int main(void)
 	if (!RandomArray)
 	{
 		cout << "Fill array elements : ";
-		for (int i = 0; i < size; i++)
-			cin >> inputArray[i];
+		for (int i = 0; i < arraySize; i++)
+		{
+			cin >> arrayIn[i];
+			vec.emplace_back(arrayIn[i]);
+		}
 	}
 	else
 	{
 		ifstream file("numbers.txt", ios_base::in);
 
-		for (int i = 0; i < size; i++)
-			file >> inputArray[i];
+		for (int i = 0; i < arraySize; i++)
+		{
+			file >> arrayIn[i];
+			vec.emplace_back(arrayIn[i]);
+		}
 
 		file.close();
 	}
@@ -52,8 +68,9 @@ int main(void)
 	cout << "********************" << endl;
 
 	cout << " 1. C++ Sort" << endl;
-	cout << " 2. MergeSort" << endl;
-	cout << " 3. QuickSort" << endl;
+	cout << " 2. QuickSort" << endl;
+	cout << " 3. MergeSort (Array)" << endl;
+	cout << " 4. MergeSort (Vector)" << endl;
 	cout << " 0. Exit" << "\n\n";
 
 	for (;;)
@@ -62,24 +79,41 @@ int main(void)
 
 		if (menu == 0)
 			break;
+		else if (menu == 4)
+			type = Type::Vector;
+		else
+			type = Type::Array;
 
-		for (int i = 0; i < size; i++)
-			ar[i] = inputArray[i];
+		switch (type)
+		{
+		case Type::Array:
+			for (int i = 0; i < arraySize; i++)
+				arrayOut[i] = arrayIn[i];
+			break;
+
+		case Type::Vector:
+			vecOut = vec;
+			break;
+		}
 
 		startClock = chrono::steady_clock::now();
 
 		switch (menu)
 		{
 		case 1:
-			sort(ar, ar + size);
+			sort(arrayOut, arrayOut + arraySize);
 			break;
 
 		case 2:
-			MergeSort::Sort(ar, 0, size - 1);
+			QuickSort::Sort(arrayOut, 0, arraySize - 1);
 			break;
 
 		case 3:
-			QuickSort::Sort(ar, 0, size - 1);
+			MergeSort::Sort(arrayOut, arrayOut + arraySize);
+			break;
+
+		case 4:
+			MergeSort::Sort(vecOut.begin(), vecOut.end());
 			break;
 		}
 
@@ -87,17 +121,33 @@ int main(void)
 
 		bool errorDetected = false;
 
-		for (int i = 1; i < size; i++)
+		if (menu == 1 || menu == 2 || menu == 3)
 		{
-			if (ar[i - 1] > ar[i])
+			for (int i = 1; i < arraySize; i++)
 			{
-				errorDetected = true;
-				break;
+				if (arrayOut[i - 1] > arrayOut[i])
+				{
+					errorDetected = true;
+					break;
+				}
+			}
+		}
+		else if (menu == 4)
+		{
+			for (auto iter = vecOut.begin() + 1; iter != vecOut.end(); iter++)
+			{
+				if (*(iter - 1) > * iter)
+				{
+					errorDetected = true;
+					break;
+				}
 			}
 		}
 
 		if (errorDetected)
+		{
 			cout << "Error Detected!" << "\n\n";
+		}
 		else
 		{
 			cout.precision(6);
@@ -105,8 +155,8 @@ int main(void)
 		}
 	}
 
-	delete[] ar;
-	delete[] inputArray;
+	delete[] arrayOut;
+	delete[] arrayIn;
 
 	return 0;
 }

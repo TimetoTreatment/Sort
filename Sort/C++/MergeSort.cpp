@@ -1,60 +1,114 @@
 #include "MergeSort.h"
 
+vector<int> MergeSort::sTempVector;
+int* MergeSort::sTempArray = nullptr;
+int MergeSort::sTempArraySize = 0;
 
-void MergeSort::Sort(int* ar, int start, int end)
+void MergeSort::ArraySort(int* begin, int* end)
 {
-	if (start >= end)
+	if (begin >= end)
 		return;
 
-	int center = (start + end) / 2;
+	int* center = begin + (end - begin) / 2;
 
-	Sort(ar, start, center);
-	Sort(ar, center + 1, end);
+	ArraySort(begin, center);
+	ArraySort(center + 1, end);
 
-	int i;
-	int left, right;
-	int* newArray = new int[end - start + 1];
+	int* left = begin;
+	int* right = center + 1;
 	int index;
 
-	left = start;
-	right = center + 1;
+	sTempVector.clear();
 
-	for (index = 0; left <= center && right <= end;)
+	for (; left <= center && right <= end;)
 	{
-		if (ar[left] <= ar[right])
+		if (*left <= *right)
 		{
-			newArray[index] = ar[left];
+			sTempVector.emplace_back(*left);
 			left++;
-			index++;
 		}
 		else
 		{
-			newArray[index] = ar[right];
+			sTempVector.emplace_back(*right);
 			right++;
-			index++;
 		}
 	}
 
 	while (left <= center)
 	{
-		newArray[index] = ar[left];
-		index++;
+		sTempVector.emplace_back(*left);
 		left++;
 	}
 
 	while (right <= end)
 	{
-		newArray[index] = ar[right];
-		index++;
+		sTempVector.emplace_back(*right);
 		right++;
 	}
 
-	for (index = 0, i = start; i <= end; i++)
+	index = 0;
+
+	for (auto iter = begin; iter <= end; iter++)
 	{
-		ar[i] = newArray[index];
+		*iter = sTempVector[index];
 		index++;
 	}
-
-	delete[] newArray;
 }
 
+
+void MergeSort::VectorSort(vector<int>::iterator begin, vector<int>::iterator end)
+{
+	if (begin >= end)
+		return;
+
+	vector<int>::iterator center = begin;
+	advance(center, distance(begin, end) / 2);
+
+	VectorSort(begin, center);
+	VectorSort(center + 1, end);
+
+	vector<int>::iterator left, right;
+
+	int index;
+
+	left = begin;
+	right = center + 1;
+
+	sTempVector.clear();
+
+	for (; left <= center && right <= end;)
+	{
+		if (*left <= *right)
+		{
+			sTempVector.emplace_back(*left);
+			left++;
+		}
+		else
+		{
+			sTempVector.emplace_back(*right);
+			right++;
+		}
+	}
+
+	while (left <= center)
+	{
+		sTempVector.emplace_back(*left);
+		left++;
+	}
+
+	while (right <= end)
+	{
+		sTempVector.emplace_back(*right);
+		right++;
+	}
+
+	auto iterOriginal = begin;
+	auto iterTemp = sTempVector.begin();
+
+	for (; iterOriginal <= end;)
+	{
+		*iterOriginal = *iterTemp;
+		iterTemp++;
+		iterOriginal++;
+	}
+}

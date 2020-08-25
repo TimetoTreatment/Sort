@@ -18,7 +18,9 @@
     <ClInclude Include="Console.h">
       <Filter>_Library</Filter>
     </ClInclude>
-    <ClInclude Include="QuickSort.h" />
+    <ClInclude Include="QuickSort.h">
+      <Filter>Sort</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.cpp">
@@ -30,7 +32,9 @@
     <ClCompile Include="main.cpp">
       <Filter>_Main</Filter>
     </ClCompile>
-    <ClCompile Include="QuickSort.cpp" />
+    <ClCompile Include="QuickSort.cpp">
+      <Filter>Sort</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="numbers.txt">
