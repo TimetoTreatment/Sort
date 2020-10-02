@@ -21,6 +21,9 @@
     <ClInclude Include="QuickSort.h">
       <Filter>Sort</Filter>
     </ClInclude>
+    <ClInclude Include="_Test.h">
+      <Filter>Sort</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.cpp">
@@ -33,6 +36,9 @@
       <Filter>_Main</Filter>
     </ClCompile>
     <ClCompile Include="QuickSort.cpp">
+      <Filter>Sort</Filter>
+    </ClCompile>
+    <ClCompile Include="_Test.cpp">
       <Filter>Sort</Filter>
     </ClCompile>
   </ItemGroup>

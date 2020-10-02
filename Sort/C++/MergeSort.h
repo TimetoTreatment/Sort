@@ -33,10 +33,4 @@ public:
 		sTempVector.reserve(distance(begin, end));
 		VectorSort(begin, end - 1);
 	}
-
-
 };
-
-
-
-

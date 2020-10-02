@@ -1,6 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include <algorithm>
+#include "_Test.h"
 #include "Console.h"
 #include "MergeSort.h"
 #include "QuickSort.h"
@@ -100,6 +101,10 @@ int main(void)
 
 		switch (menu)
 		{
+		case 5:
+			_Test::Sort(arrayOut, arraySize);
+			break;
+
 		case 1:
 			sort(arrayOut, arrayOut + arraySize);
 			break;
@@ -121,7 +126,7 @@ int main(void)
 
 		bool errorDetected = false;
 
-		if (menu == 1 || menu == 2 || menu == 3)
+		if (type==Type::Array)
 		{
 			for (int i = 1; i < arraySize; i++)
 			{
@@ -132,7 +137,7 @@ int main(void)
 				}
 			}
 		}
-		else if (menu == 4)
+		else if (type == Type::Vector)
 		{
 			for (auto iter = vecOut.begin() + 1; iter != vecOut.end(); iter++)
 			{
@@ -150,7 +155,7 @@ int main(void)
 		}
 		else
 		{
-			cout.precision(6);
+			cout.precision(10);
 			cout << fixed << elapsedClock.count() << "\n\n";
 		}
 	}

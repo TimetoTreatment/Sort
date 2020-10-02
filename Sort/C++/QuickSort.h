@@ -16,29 +16,27 @@ public:
 
 		int i, j, temp;
 		int pivot;
-		int pivot_list[3];
+		int pivotList[3];
 
 		for (i = 0; i < 3; i++)
-		{
-			pivot_list[i] = ar[(end - start) * (i + 1) / 4 + start];
-		}
+			pivotList[i] = ar[(end - start) * (i + 1) / 4 + start];
 
 		for (i = 0; i < 2; i++)
 		{
 			for (j = i + 1; j <= 2; j++)
 			{
-				if (pivot_list[i] > pivot_list[j])
+				if (pivotList[i] > pivotList[j])
 				{
-					temp = pivot_list[i];
-					pivot_list[i] = pivot_list[j];
-					pivot_list[j] = temp;
+					temp = pivotList[i];
+					pivotList[i] = pivotList[j];
+					pivotList[j] = temp;
 				}
 			}
 		}
 
-		pivot = pivot_list[1];
+		pivot = pivotList[1];
 
-		for (i = start, j = end; i <= j; i++, j--)
+		for (i = start, j = end;; i++, j--)
 		{
 			while (ar[i] < pivot) i++;
 			while (ar[j] > pivot) j--;
