@@ -21,11 +21,20 @@
     <ClInclude Include="QuickSort.h">
       <Filter>Sort</Filter>
     </ClInclude>
-    <ClInclude Include="_Test.h">
-      <Filter>Sort</Filter>
-    </ClInclude>
     <ClInclude Include="Random.h">
       <Filter>_Library</Filter>
+    </ClInclude>
+    <ClInclude Include="TestSite.h">
+      <Filter>_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>_Library</Filter>
+    </ClInclude>
+    <ClInclude Include="__TestSort.h">
+      <Filter>Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="_EmperorSort.h">
+      <Filter>Sort</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -41,11 +50,20 @@
     <ClCompile Include="QuickSort.cpp">
       <Filter>Sort</Filter>
     </ClCompile>
-    <ClCompile Include="_Test.cpp">
-      <Filter>Sort</Filter>
-    </ClCompile>
     <ClCompile Include="Random.cpp">
       <Filter>_Library</Filter>
+    </ClCompile>
+    <ClCompile Include="TestSite.cpp">
+      <Filter>_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>_Library</Filter>
+    </ClCompile>
+    <ClCompile Include="__TestSort.cpp">
+      <Filter>Sort</Filter>
+    </ClCompile>
+    <ClCompile Include="_EmperorSort.cpp">
+      <Filter>Sort</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

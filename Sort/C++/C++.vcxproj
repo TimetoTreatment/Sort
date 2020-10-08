@@ -141,17 +141,23 @@
   <ItemGroup>
     <ClInclude Include="Console.h" />
     <ClInclude Include="MergeSort.h" />
+    <ClInclude Include="_EmperorSort.h" />
     <ClInclude Include="QuickSort.h" />
     <ClInclude Include="Random.h" />
-    <ClInclude Include="_Test.h" />
+    <ClInclude Include="TestSite.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="__TestSort.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MergeSort.cpp" />
+    <ClCompile Include="_EmperorSort.cpp" />
     <ClCompile Include="QuickSort.cpp" />
     <ClCompile Include="Random.cpp" />
-    <ClCompile Include="_Test.cpp" />
+    <ClCompile Include="TestSite.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="__TestSort.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="numbers.txt" />

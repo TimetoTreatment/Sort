@@ -1,9 +1,5 @@
 #include "MergeSort.h"
 
-vector<int> MergeSort::sTempVector;
-int* MergeSort::sTempArray = nullptr;
-int MergeSort::sTempArraySize = 0;
-
 void MergeSort::ArraySort(int* begin, int* end)
 {
 	if (begin >= end)

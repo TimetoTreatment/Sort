@@ -5,27 +5,27 @@ using namespace std;
 
 
 
-class _Test
+class TestSort
 {
 private:
 
 	static random_device mSeed;
 	static mt19937 mEngine;
 
-	static int FindPivot(int* ar, int start, int end)
+	int FindPivot(int* ar, int start, int end)
 	{
 		uniform_int_distribution<int> distribution(start, end);
 		return ar[distribution(mEngine)];
 	}
 
-	static void Swap(int& left, int& right)
+	void Swap(int& left, int& right)
 	{
 		int temp = left;
 		left = right;
 		right = temp;
 	}
 
-	static void InsertionSort(int* ar, int start, int end)
+	void InsertionSort(int* ar, int start, int end)
 	{
 		int i, j;
 		int currentValue;
@@ -46,7 +46,7 @@ private:
 		}
 	}
 
-	static void rSort(int* ar, int start, int end)
+	void rSort(int* ar, int start, int end)
 	{
 		if (start >= end)
 			return;
@@ -82,7 +82,7 @@ private:
 
 public:
 
-	static void Sort(int* ar, int size)
+	void Sort(int* ar, int size)
 	{
 		rSort(ar, 0, size - 1);
 	}
