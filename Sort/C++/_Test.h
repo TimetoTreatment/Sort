@@ -1,8 +1,5 @@
 #pragma once
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <vector>
+#include <random>
 
 using namespace std;
 
@@ -10,83 +7,84 @@ using namespace std;
 
 class _Test
 {
-	typedef struct Vector2i
-	{
-		int value[2];
+private:
 
-	} Vector2i;
-
-	static void Swap(int* left, int* right)
-	{
-		int temp = *left;
-		*left = *right;
-		*right = temp;
-	}
+	static random_device mSeed;
+	static mt19937 mEngine;
 
 	static int FindPivot(int* ar, int start, int end)
 	{
-		return ar[rand() % (end - start + 1) + start];
+		uniform_int_distribution<int> distribution(start, end);
+		return ar[distribution(mEngine)];
 	}
 
-	static Vector2i Partition(int* ar, int start, int end)
+	static void Swap(int& left, int& right)
 	{
-		int left;
-		int right;
-		int backupStart;
-		int newEnd;
+		int temp = left;
+		left = right;
+		right = temp;
+	}
+
+	static void InsertionSort(int* ar, int start, int end)
+	{
+		int i, j;
+		int currentValue;
+
+		for (i = start + 1; i <= end; i++)
+		{
+			currentValue = ar[i];
+
+			for (j = i - 1; j >= start; j--)
+			{
+				if (ar[j] > ar[j + 1])
+					Swap(ar[j], ar[j + 1]);
+				else
+					break;
+			}
+
+			ar[j] = currentValue;
+		}
+	}
+
+	static void rSort(int* ar, int start, int end)
+	{
+		if (start >= end)
+			return;
+
+		int left, right;
+		int i;
 		int pivot = FindPivot(ar, start, end);
 
-		for (left = start, right = end;;)
+		left = i = start;
+		right = end;
+
+		for (; i <= right;)
 		{
-			while (right >= start && ar[right] == pivot)
-				right--;
-
-			while (left < right && ar[left] != pivot)
+			if (ar[i] < pivot)
+			{
+				Swap(ar[left], ar[i]);
 				left++;
-
-			if (left < right)
-				Swap(&ar[left], &ar[right]);
+				i++;
+			}
+			else if (ar[i] > pivot)
+			{
+				Swap(ar[right], ar[i]);
+				right--;
+			}
 			else
-				break;
+				i++;
 		}
 
-		backupStart = right + 1;
-
-		for (left = start; left <= right;)
-		{
-			while (left <= right && ar[left] < pivot)
-				left++;
-			while (left <= right && ar[right] > pivot)
-				right--;
-
-			if (left < right)
-				Swap(&ar[left], &ar[right]);
-		}
-
-		newEnd = right;
-
-		for (right = backupStart; right <= end; left++, right++)
-			Swap(&ar[left], &ar[right]);
-
-		return Vector2i { newEnd, left };
+		rSort(ar, start, left - 1);
+		rSort(ar, right + 1, end);
 	}
 
-	static void QuickSort(int* ar, int start, int end)
-	{
-		if (start < end)
-		{
-			Vector2i index = Partition(ar, start, end);
-			QuickSort(ar, start, index.value[0]);
-			QuickSort(ar, index.value[1], end);
-		}
-	}
 
 public:
 
 	static void Sort(int* ar, int size)
 	{
-		srand(time(NULL));
-		QuickSort(ar, 0, size - 1);
+		rSort(ar, 0, size - 1);
 	}
 };
 

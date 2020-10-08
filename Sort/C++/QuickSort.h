@@ -1,58 +1,106 @@
 #pragma once
+#include <random>
+
+using namespace std;
+
+
 class QuickSort
 {
+private:
+
+	static random_device mSeed;
+	static mt19937 mEngine;
+
+	static int FindPivot(int* ar, int start, int end)
+	{
+		uniform_int_distribution<int> distribution(start, end);
+		return ar[distribution(mEngine)];
+	}
+
+	static void Swap(int& left, int& right)
+	{
+		int temp = left;
+		left = right;
+		right = temp;
+	}
+
+	static void InsertionSort(int* ar, int start, int end)
+	{
+		int i, j;
+		int currentValue;
+
+		for (i = start + 1; i <= end; i++)
+		{
+			currentValue = ar[i];
+
+			for (j = i - 1; j >= start; j--)
+			{
+				if (ar[j] > ar[j + 1])
+					Swap(ar[j], ar[j + 1]);
+				else
+					break;
+			}
+
+			ar[j] = currentValue;
+		}
+	}
+
+	static void rSort(int* ar, int start, int end)
+	{
+		if (end - start <= 10)
+		{
+			InsertionSort(ar, start, end);
+			return;
+		}
+
+		int left;
+		int right;
+		int backupStart;
+		int newEnd;
+		int pivot = FindPivot(ar, start, end);
+
+		for (left = start, right = end;;)
+		{
+			while (left <= right && ar[left] != pivot)
+				left++;
+			while (left <= right && ar[right] == pivot)
+				right--;
+
+			if (left < right)
+				Swap(ar[left], ar[right]);
+			else
+				break;
+		}
+
+		backupStart = right + 1;
+
+		for (left = start;;)
+		{
+			while (left <= right && ar[left] < pivot)
+				left++;
+			while (left <= right && ar[right] > pivot)
+				right--;
+
+			if (left < right)
+				Swap(ar[left], ar[right]);
+			else
+				break;
+		}
+
+		newEnd = right;
+
+		for (right = backupStart; right <= end; left++, right++)
+			Swap(ar[left], ar[right]);
+
+		rSort(ar, start, newEnd);
+		rSort(ar, left, end);
+	}
+
+
 public:
 
-	static void Sort(int ar[], int start, int end)
+	static void Sort(int* ar, int size)
 	{
-		//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-//	
-		// * Ascending Sort Function * //	
-		//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-//
-		/*                              *
-			1. ar[] = array to sort
-			2. start = first of array
-			3. end = last of array
-		*                               */
-
-		int i, j, temp;
-		int pivot;
-		int pivotList[3];
-
-		for (i = 0; i < 3; i++)
-			pivotList[i] = ar[(end - start) * (i + 1) / 4 + start];
-
-		for (i = 0; i < 2; i++)
-		{
-			for (j = i + 1; j <= 2; j++)
-			{
-				if (pivotList[i] > pivotList[j])
-				{
-					temp = pivotList[i];
-					pivotList[i] = pivotList[j];
-					pivotList[j] = temp;
-				}
-			}
-		}
-
-		pivot = pivotList[1];
-
-		for (i = start, j = end;; i++, j--)
-		{
-			while (ar[i] < pivot) i++;
-			while (ar[j] > pivot) j--;
-
-			if (i > j)
-				break;
-
-			if (i < j)
-			{
-				temp = ar[i];
-				ar[i] = ar[j];
-				ar[j] = temp;
-			}
-		}
-
-		if (start < j)	Sort(ar, start, j);
-		if (i < end)	Sort(ar, i, end);
+		rSort(ar, 0, size - 1);
 	}
 };

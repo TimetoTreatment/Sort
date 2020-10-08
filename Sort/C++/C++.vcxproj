@@ -142,6 +142,7 @@
     <ClInclude Include="Console.h" />
     <ClInclude Include="MergeSort.h" />
     <ClInclude Include="QuickSort.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="_Test.h" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +150,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MergeSort.cpp" />
     <ClCompile Include="QuickSort.cpp" />
+    <ClCompile Include="Random.cpp" />
     <ClCompile Include="_Test.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -17,8 +17,6 @@ enum class Type
 
 int main(void)
 {
-	Console* console = Console::Instance();
-
 	chrono::steady_clock::time_point startClock;
 	chrono::duration<double> elapsedClock;
 
@@ -34,6 +32,7 @@ int main(void)
 
 	cout << "Enter size of array : ";
 	cin >> arraySize;
+
 	arrayIn = new int[arraySize];
 	arrayOut = new int[arraySize];
 	vec.reserve(arraySize);
@@ -101,7 +100,7 @@ int main(void)
 
 		switch (menu)
 		{
-		case 5:
+		case -1:
 			_Test::Sort(arrayOut, arraySize);
 			break;
 
@@ -110,7 +109,7 @@ int main(void)
 			break;
 
 		case 2:
-			QuickSort::Sort(arrayOut, 0, arraySize - 1);
+			QuickSort::Sort(arrayOut, arraySize);
 			break;
 
 		case 3:
