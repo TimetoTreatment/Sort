@@ -36,6 +36,9 @@
     <ClInclude Include="_EmperorSort.h">
       <Filter>Sort</Filter>
     </ClInclude>
+    <ClInclude Include="HeapSort.h">
+      <Filter>Sort</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MergeSort.cpp">
@@ -63,6 +66,9 @@
       <Filter>Sort</Filter>
     </ClCompile>
     <ClCompile Include="_EmperorSort.cpp">
+      <Filter>Sort</Filter>
+    </ClCompile>
+    <ClCompile Include="HeapSort.cpp">
       <Filter>Sort</Filter>
     </ClCompile>
   </ItemGroup>

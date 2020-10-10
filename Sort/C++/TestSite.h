@@ -8,8 +8,10 @@
 #include "_EmperorSort.h"
 #include "MergeSort.h"
 #include "QuickSort.h"
+#include "HeapSort.h"
 
 using namespace std;
+
 
 class TestSite
 {
@@ -19,6 +21,8 @@ private:
 	TestSort mTest;
 	QuickSort mQuick;
 	MergeSort mMerge;
+	HeapSort_Array mHeapArray;
+	HeapSort_List mHeapList;
 
 	Timer mTimer;
 	int* mArray;

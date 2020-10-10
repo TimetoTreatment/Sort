@@ -25,6 +25,8 @@ void TestSite::Prompt()
 	cout << " 2. C++ Sort" << endl;
 	cout << " 3. QuickSort" << endl;
 	cout << " 4. MergeSort" << endl;
+	cout << " 5. HeapSort (Array)" << endl;
+	cout << " 6. HeapSort (List)" << endl;
 	cout << " 0. Exit" << "\n\n";
 }
 
@@ -51,6 +53,14 @@ void TestSite::Sort()
 
 	case 4:
 		mMerge.Sort(mArrayDup, mArrayDup + mArraySize);
+		break;
+
+	case 5:
+		mHeapArray.Sort(mArrayDup, mArraySize);
+		break;
+
+	case 6:
+		mHeapList.Sort(mArrayDup, mArraySize);
 		break;
 	}
 }
